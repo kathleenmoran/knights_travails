@@ -7,7 +7,9 @@ module Displayable
   def user_input_coord(type, axis)
     puts "Please enter the #{type} #{axis}-coordinate for the knight (a digit from 0 to #{Constants::DIMENSION - 1}):"
     user_input = gets.chomp
-    return user_input.to_i if user_input.to_i.to_s == user_input && user_input.to_i.between?(0, Constants::DIMENSION - 1)
+    if user_input.to_i.to_s == user_input && user_input.to_i.between?(0, Constants::DIMENSION - 1)
+      return user_input.to_i
+    end
 
     puts 'Invalid input.'
     user_input_coord(type, axis)

@@ -11,14 +11,6 @@ class Board
     generate_graph
   end
 
-  def generate_graph
-    until @unvisited_coords.empty?
-      new_coord = @unvisited_coords.shift
-      add_coord(new_coord)
-      @unvisited_coords += @graph[new_coord]
-    end
-  end
-
   def find_path(coord)
     queue = [[@start_coord]]
     until queue.empty?
@@ -30,6 +22,16 @@ class Board
         new_path = (path.dup << adjacent_coord)
         queue << new_path
       end
+    end
+  end
+
+  private
+
+  def generate_graph
+    until @unvisited_coords.empty?
+      new_coord = @unvisited_coords.shift
+      add_coord(new_coord)
+      @unvisited_coords += @graph[new_coord]
     end
   end
 
