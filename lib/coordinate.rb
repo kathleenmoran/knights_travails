@@ -31,11 +31,11 @@ class Coordinate
     "[#{@x},#{@y}]"
   end
 
-  private
-
   def valid?
     @x.between?(0, Constants::DIMENSION - 1) && @y.between?(0, Constants::DIMENSION - 1)
   end
+
+  private
 
   def nearby_coordinate(x_increment, y_increment)
     Coordinate.new(@x + x_increment, @y + y_increment)
